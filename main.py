@@ -1,5 +1,6 @@
 import random
 
+list_nanes = ['Joe', 'Alex', 'Andr', 'Max', 'Volok', 'Bilbo', 'Kattar', 'Volk', 'Delf', 'Jorje', 'Hulk', 'Bastard', 'Lexx', 'Botfort', 'Letter', 'Smirnov', 'Serega', 'Broman', 'Barmen', 'Pertro',]
 
 class Thing:
     def __repr__(self):
@@ -21,11 +22,8 @@ things = [Thing() for x in range(50)]
 
 class Person:
 
-
     def __init__(self, hp=0, name=None, attack=0, defence=0):
-        list_nanes = ['Joe', 'Alex',
-                      'Andr', 'Max', 'Volok']
-        self.name = name or random.choice(list_nanes)
+        self.name = name
         self.hp = hp
         self.attack = attack
         self.defence = defence
@@ -39,20 +37,34 @@ class Person:
             self.defence += thing.defence
 
 class Paladin(Person):
-    def __init__(self):
-        self.hp = self.hp * 2
-        self.defence = self.defence * 2
-
-class Warior(Person):
-    def __init__(self):
-        self.hp = self.attack * 2
+    def __init__(self, hp, name, attack, defence):
+        super().__init__(hp, name, attack, defence)
+        self.hp *= 2
+        self.defence *= 2
 
 
-a1 = Person()
-a2 = Person()
-a1.setThings(things)
-a2.setThings(things)
+class Warrior(Person):
+    def __init__(self, hp, name, attack, defence):
+        super().__init__(hp, name, attack, defence)
+        self.attack *= 2
 
-print(f'Сегодня у нас встречается непобедимый {a1.name} с атакой {a1.attack}, защитой {a1.defence}\n и непорившийся {a2.name}с  атакой {a2.attack}, защитой {a2.defence}!')
+classes = [Paladin, Warrior] #классы
+rand = random.randint(1, 10) #начальные характеристики для персонажа
+hero_1 = random.choice(classes)(rand, random.choice(list_nanes), rand, rand)
+hero_2 = random.choice(classes)(rand, random.choice(list_nanes), rand, rand)
+hero_3 = random.choice(classes)(rand, random.choice(list_nanes), rand, rand)
+hero_4 = random.choice(classes)(rand, random.choice(list_nanes), rand, rand)
+hero_5 = random.choice(classes)(rand, random.choice(list_nanes), rand, rand)
+hero_6 = random.choice(classes)(rand, random.choice(list_nanes), rand, rand)
+hero_7 = random.choice(classes)(rand, random.choice(list_nanes), rand, rand)
+hero_8 = random.choice(classes)(rand, random.choice(list_nanes), rand, rand)
+hero_9 = random.choice(classes)(rand, random.choice(list_nanes), rand, rand)
+hero_10 = random.choice(classes)(rand, random.choice(list_nanes), rand, rand)
+hero_1.setThings(things)
+hero_2.setThings(things)
 
+
+print('======================================')
+print(f'Сегодня у нас встречается непобедимый {hero_1.name} с атакой {hero_1.attack}, защитой {hero_1.defence}\n и непорившийся {hero_2.name} с  атакой {hero_2.attack}, защитой {hero_2.defence}!')
+print('======================================')
 
