@@ -15,8 +15,8 @@ class Thing:
             self.hp = hp or random.randint(50, 100)
             self.count += 1
 
-things = [Thing() for x in range(50)]
 
+things = [Thing() for x in range(50)]
 
 
 class Person:
@@ -40,8 +40,4 @@ class Person:
 a = Person()
 a.setThings(things)
 thing = random.choice(things)
-print(a.name, a.hp, a.attack, a.defence) #отдает нули
-
-
-
 
