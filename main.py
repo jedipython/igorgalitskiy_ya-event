@@ -20,6 +20,8 @@ things = [Thing() for x in range(50)]
 
 
 class Person:
+
+
     def __init__(self, hp=0, name=None, attack=0, defence=0):
         list_nanes = ['Joe', 'Alex',
                       'Andr', 'Max', 'Volok']
@@ -36,8 +38,21 @@ class Person:
             self.attack += thing.attack
             self.defence += thing.defence
 
+class Paladin(Person):
+    def __init__(self):
+        self.hp = self.hp * 2
+        self.defence = self.defence * 2
 
-a = Person()
-a.setThings(things)
-thing = random.choice(things)
+class Warior(Person):
+    def __init__(self):
+        self.hp = self.attack * 2
+
+
+a1 = Person()
+a2 = Person()
+a1.setThings(things)
+a2.setThings(things)
+
+print(f'Сегодня у нас встречается непобедимый {a1.name} с атакой {a1.attack}, защитой {a1.defence}\n и непорившийся {a2.name}с  атакой {a2.attack}, защитой {a2.defence}!')
+
 
