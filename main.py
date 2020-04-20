@@ -36,8 +36,8 @@ class Person:
             self.attack += thing.attack
             self.defence += thing.defence
 
-    def minus_hp(self):
-        pass
+    def attacks(self, attack):
+        self.hp = self.hp - attack
 
 
 class Paladin(Person):
@@ -83,6 +83,25 @@ print('======================================')
 print(f'На арену вышли:\n{hero_1.name}, класса {hero_1.class_name}\n{hero_2.name}, класса {hero_2.class_name}\n{hero_3.name}, класса {hero_3.class_name}\n{hero_4.name}, класса {hero_4.class_name}\n{hero_5.name}, класса {hero_5.class_name}\n{hero_6.name}, класса {hero_6.class_name}\n{hero_7.name}, класса {hero_7.class_name}\n{hero_8.name}, класса {hero_8.class_name}\n{hero_9.name}, класса {hero_9.class_name}\n{hero_10.name}, класса {hero_10.class_name}')
 print('======================================')
 
+hero_in_arena = [hero_1, hero_2, hero_3, hero_4, hero_5, hero_6, hero_7, hero_8, hero_9, hero_10]
+
 def battle():
-    attack_hero = hero_1
-    def_hero = hero_3
+    while len(hero_in_arena) > 0:
+        attack_hero = random.choice(hero_in_arena)
+        defence_hero = random.choice(hero_in_arena)
+        while attack_hero == defence_hero:
+            defence_hero = random.choice(hero_in_arena)
+        print(f'На арене выступит атакующий {attack_hero.name}, а в защите вы увидите {defence_hero.name}')
+        print(f'{attack_hero.hp}- хп нападающего, {defence_hero.hp} - хп защищаюегося')
+        while attack_hero.hp > 0 or defence_hero.hp > 0:
+            attack = (attack_hero.attack - attack_hero.attack*defence_hero.defence)
+            defence_hero.attacks(attack_hero.attack)
+            attack = (defence_hero.attack - defence_hero.attack*attack_hero.defence)
+            attack_hero.attacks(defence_hero.attack)
+        print(f'{attack_hero.hp}- хп нападающего, {defence_hero.hp} - хп защищаюегося')
+        hero_in_arena.remove(attack_hero)
+        hero_in_arena.remove(defence_hero)
+
+battle()
+    
+
